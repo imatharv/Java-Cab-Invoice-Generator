@@ -17,5 +17,9 @@ public class CabService {
 		totalfare = (distance * MINIMUM_COST_PER_KM) + (time * COST_PER_TIME);
 		return totalfare;
 	}
-
+	
+	public double computeFareForMultipleRide(double totalFare, final int rides) {
+		double totalFareForMultipleRides = totalFare * rides;
+		return totalFareForMultipleRides;
+	}
 }
