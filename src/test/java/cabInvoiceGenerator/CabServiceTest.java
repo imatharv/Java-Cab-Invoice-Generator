@@ -30,12 +30,11 @@ public class CabServiceTest {
 		assertEquals(0, totalFare, 0.0);
 	}
 	@Test
-	public void testComputeFare_ShouldReturnTotalFareForMultipleRides() {	
-		double distance = 2.5;
-		int time = 10;
-		int rides = 3;
-		double totalFare = object.computeFare(distance,time);
-		double totalFareForMultipleRides = object.computeFareForMultipleRide(totalFare,rides);
-		assertEquals(105, totalFareForMultipleRides, 0.0);
+	public void testComputeFare_shouldReturnTotalFare_AverageFare_TotalRides() {	
+		Ride[] rides= { new Ride(2.0,5), new Ride(0.1,1) };
+	
+		InvoiceSummary invoiceSummary = object.computeTotalFare(rides);
+		InvoiceSummary expected = new InvoiceSummary(2, 45, 22.5);
+		assertEquals(expected, invoiceSummary);	
 	}
 }

@@ -6,8 +6,12 @@ public class CabService {
 	private static final double MINIMUM_COST_PER_KM = 10;
 	private static final int MINIMUM_FARE = 20;
 	
+	double totalfare;
+	double totalFareForMultipleRides;
+	double averageFarePerRide;
+	
 	public double computeFare(double distance, int time) {
-		double totalfare = 0;
+		totalfare = 0;
 		if(distance == 0.0 && time == 0) {
 			return totalfare = 0;			
 		}
@@ -17,9 +21,22 @@ public class CabService {
 		totalfare = (distance * MINIMUM_COST_PER_KM) + (time * COST_PER_TIME);
 		return totalfare;
 	}
-	
-	public double computeFareForMultipleRide(double totalFare, final int rides) {
-		double totalFareForMultipleRides = totalFare * rides;
-		return totalFareForMultipleRides;
+
+	public double computeFare(Ride[] rides) {
+		for(Ride ride:rides) {
+			totalfare += this.computeFare(ride.distance, ride.time);
+		}
+		return totalfare;
 	}
+
+	public InvoiceSummary computeTotalFare(Ride[] ride) {
+		double totalfare = 0;
+		double averageFare = 0;
+		for(Ride rides: ride) {
+			totalfare += this.computeFare(rides.distance, rides.time);	
+		}
+		averageFare = totalfare/ride.length;
+		return new InvoiceSummary(ride.length, totalfare, averageFare);
+	}
+	
 }
