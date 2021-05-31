@@ -1,12 +1,12 @@
 package cabInvoiceGenerator;
 
 public class InvoiceSummary {
-	private final int numofRides;
+	private final int numberOfRides;
 	private final double totalFare;
 	private final double averageFare;
 	
-	public InvoiceSummary(int numofRides, double totalFare, double averageFare ) {
-		this.numofRides=numofRides;
+	public InvoiceSummary(int numberOfRides, double totalFare, double averageFare ) {
+		this.numberOfRides = numberOfRides;
 		this.totalFare = totalFare;
 		this.averageFare= averageFare;
 	}
@@ -22,7 +22,7 @@ public class InvoiceSummary {
 		
 		if (Double.doubleToLongBits(averageFare) != Double.doubleToLongBits(other.averageFare))
 			return false;
-		if (numofRides != other.numofRides)
+		if (numberOfRides != other.numberOfRides)
 			return false;
 		if (Double.doubleToLongBits(totalFare) != Double.doubleToLongBits(other.totalFare))
 			return false;
